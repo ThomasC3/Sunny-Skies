@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sunny Skies</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.sh/@google/genai@^0.14.0"
+        }
+      }
+    </script>
+    <script type="module" src="index.tsx"></script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <main>
+      <header>
+        <div class="logo">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="sun-icon"
+          >
+            <path
+              d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 010 1.06l-1.591 1.59a.75.75 0 01-1.06-1.06l1.59-1.591a.75.75 0 011.06 0zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM17.803 17.803a.75.75 0 01-1.06 0l-1.59-1.591a.75.75 0 111.06-1.06l1.59 1.591a.75.75 0 010 1.06zM12 18.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM5.106 17.803a.75.75 0 010-1.06l1.591-1.59a.75.75 0 011.06 1.06l-1.591 1.59a.75.75 0 01-1.06 0zM4.5 12a.75.75 0 01-.75.75H1.5a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM6.106 5.106a.75.75 0 011.06 0l1.591 1.59a.75.75 0 01-1.06 1.06l-1.59-1.591a.75.75 0 010-1.06z"
+            ></path>
+          </svg>
+        </div>
+        <h1>Sunny Skies</h1>
+        <p>Generate fantastical weather anomalies with the power of AI.</p>
+      </header>
+      <form id="generator-form">
+        <div class="form-group">
+          <label for="anomaly-input">
+            Fantastical Anomaly
+            <span class="tooltip-trigger" tabindex="0" data-tooltip="Define the core weather event. Be descriptive and specific for the best results (e.g., 'A cascading aurora of liquid light').">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.94 6.94a.75.75 0 11-1.061-1.061 3 3 0 112.871 5.026v.345a.75.75 0 01-1.5 0v-.5c0-.72.57-1.172 1.081-1.287A1.5 1.5 0 108.94 6.94zM10 15a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /></svg>
+            </span>
+          </label>
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="anomaly-input"
+              name="anomaly"
+              placeholder="e.g., A recursive storm of fractal lightning"
+              required
+            />
+            <button type="button" id="suggest-btn" aria-label="Suggest a fantastical anomaly" class="input-adornment" data-tooltip="Let the AI generate a creative anomaly idea for you.">
+              <svg class="sparkle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.868 2.884c.321.64.321 1.415 0 2.055L9.432 6.945l-2.016.932a1.25 1.25 0 00-.88 2.224l.056.126l.932 2.016l2.055.432c.64.133 1.415.133 2.055 0l2.055-.432l.932-2.016l.056-.126a1.25 1.25 0 00-.88-2.224l-2.016-.932L10.868 2.884zM6.632 11.88a.75.75 0 00-.287.94l.243.522a.75.75 0 00.94.287l.522-.243a.75.75 0 00.287-.94l-.243-.522a.75.75 0 00-.94-.287l-.522.243zM13.368 11.88a.75.75 0 00-.94.287l-.243.522a.75.75 0 00.287.94l.522.243a.75.75 0 00.94-.287l.243-.522a.75.75 0 00-.287-.94l-.522-.243zM12.188 4.632a.75.75 0 00.287-.94l-.243-.522a.75.75 0 00-.94-.287l-.522-.243a.75.75 0 00-.287.94l.243.522a.75.75 0 00.94.287l.522-.243zM8.812 4.632a.75.75 0 00.94-.287l.243-.522a.75.75 0 00-.287-.94l-.522-.243a.75.75 0 00-.94.287l-.243.522a.75.75 0 00.287.94l.522.243z" clip-rule="evenodd" />
+              </svg>
+            </button>
+             <button type="button" id="assistant-btn" aria-label="Open AI Assistant" class="input-adornment" data-tooltip="Open the AI assistant to brainstorm and refine your prompt.">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="chat-icon">
+                <path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM2 10a8 8 0 1116 0 8 8 0 01-16 0zm5-2.25A.75.75 0 017.75 7h.5a.75.75 0 01.75.75v4.5a.75.75 0 01-.75.75h-.5a.75.75 0 01-.75-.75v-4.5zm4 0A.75.75 0 0111.75 7h.5a.75.75 0 01.75.75v4.5a.75.75 0 01-.75.75h-.5a.75.75 0 01-.75-.75v-4.5z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="location-input">
+            Location
+            <span class="tooltip-trigger" tabindex="0" data-tooltip="Specify the environment. Real-world weather data and a live satellite view will be fetched for the selected location.">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.94 6.94a.75.75 0 11-1.061-1.061 3 3 0 112.871 5.026v.345a.75.75 0 01-1.5 0v-.5c0-.72.57-1.172 1.081-1.287A1.5 1.5 0 108.94 6.94zM10 15a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /></svg>
+            </span>
+          </label>
+          <div class="input-wrapper">
+             <input
+              type="text"
+              id="location-input"
+              name="location"
+              placeholder="e.g., Reykjavik, Iceland"
+              required
+              autocomplete="off"
+            />
+            <div id="location-loader" class="input-loader hidden"></div>
+          </div>
+          <div id="location-suggestions" class="suggestions-container"></div>
+        </div>
+
+        <div id="context-container" class="hidden">
+           <div id="weather-container">
+             <h3 id="weather-location-name"></h3>
+             <div id="weather-grid"></div>
+           </div>
+           <div id="live-view-container">
+              <h3>Live View from WeatherNext</h3>
+              <div id="live-view-wrapper">
+                  <div id="live-view-loader" class="hidden">
+                      <div class="input-loader"></div>
+                      <span>Generating...</span>
+                  </div>
+                  <img id="live-view-image" class="hidden" alt="Live satellite view of the selected location.">
+                  <div id="live-view-error" class="hidden">Could not generate live view.</div>
+              </div>
+           </div>
+        </div>
+
+        <div class="form-group">
+          <div class="advanced-header">
+            <label>
+              Advanced Data Layers
+              <span class="tooltip-trigger" tabindex="0" data-tooltip="Instruct the AI to incorporate additional real-world data feeds to enhance simulation accuracy and detail.">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.94 6.94a.75.75 0 11-1.061-1.061 3 3 0 112.871 5.026v.345a.75.75 0 01-1.5 0v-.5c0-.72.57-1.172 1.081-1.287A1.5 1.5 0 108.94 6.94zM10 15a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /></svg>
+              </span>
+            </label>
+             <label class="switch">
+              <input type="checkbox" id="advanced-toggle">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div id="advanced-data-container">
+            <div class="advanced-data-grid">
+                <div class="data-layer-item">
+                    <label for="data-goes" class="data-layer-label">
+                      GOES-16 Satellite
+                      <span class="tooltip-trigger" tabindex="0" data-tooltip="Integrates real-time geostationary satellite imagery (GOES-16) for cloud patterns, atmospheric motion, and storm tracking."><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.94 6.94a.75.75 0 11-1.061-1.061 3 3 0 112.871 5.026v.345a.75.75 0 01-1.5 0v-.5c0-.72.57-1.172 1.081-1.287A1.5 1.5 0 108.94 6.94zM10 15a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /></svg></span>
+                    </label>
+                    <label class="switch small-switch">
+                      <input type="checkbox" id="data-goes">
+                      <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="data-layer-item">
+                    <label for="data-dem" class="data-layer-label">
+                      Terrain Model (DEM)
+                      <span class="tooltip-trigger" tabindex="0" data-tooltip="Uses high-resolution Digital Elevation Models to accurately simulate how the anomaly interacts with local terrain like mountains and valleys."><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.94 6.94a.75.75 0 11-1.061-1.061 3 3 0 112.871 5.026v.345a.75.75 0 01-1.5 0v-.5c0-.72.57-1.172 1.081-1.287A1.5 1.5 0 108.94 6.94zM10 15a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /></svg></span>
+                    </label>
+                    <label class="switch small-switch">
+                      <input type="checkbox" id="data-dem">
+                      <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="data-layer-item">
+                    <label for="data-ocean" class="data-layer-label">
+                      Oceanographic Data
+                      <span class="tooltip-trigger" tabindex="0" data-tooltip="Incorporates real-time water levels, tides, and currents (NWLON/PORTS) for coastal and marine simulations."><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.94 6.94a.75.75 0 11-1.061-1.061 3 3 0 112.871 5.026v.345a.75.75 0 01-1.5 0v-.5c0-.72.57-1.172 1.081-1.287A1.5 1.5 0 108.94 6.94zM10 15a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /></svg></span>
+                    </label>
+                    <label class="switch small-switch">
+                      <input type="checkbox" id="data-ocean">
+                      <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="data-layer-item">
+                    <label for="data-cdr" class="data-layer-label">
+                      Climate Records (CDR)
+                      <span class="tooltip-trigger" tabindex="0" data-tooltip="Leverages long-term Climate Data Records (CDR) to ground the anomaly in the region's historical weather patterns and normals."><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.94 6.94a.75.75 0 11-1.061-1.061 3 3 0 112.871 5.026v.345a.75.75 0 01-1.5 0v-.5c0-.72.57-1.172 1.081-1.287A1.5 1.5 0 108.94 6.94zM10 15a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /></svg></span>
+                    </label>
+                    <label class="switch small-switch">
+                      <input type="checkbox" id="data-cdr">
+                      <span class="slider round"></span>
+                    </label>
+                </div>
+                 <div class="data-layer-item">
+                    <label for="data-noaa" class="data-layer-label">
+                      NOAA-EMC Models
+                      <span class="tooltip-trigger" tabindex="0" data-tooltip="Incorporates principles from NOAA's Environmental Modeling Center (EMC) numerical models for professional-grade atmospheric and oceanic prediction."><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.94 6.94a.75.75 0 11-1.061-1.061 3 3 0 112.871 5.026v.345a.75.75 0 01-1.5 0v-.5c0-.72.57-1.172 1.081-1.287A1.5 1.5 0 108.94 6.94zM10 15a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /></svg></span>
+                    </label>
+                    <label class="switch small-switch">
+                      <input type="checkbox" id="data-noaa">
+                      <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label id="style-label">
+            Simulation Style
+            <span class="tooltip-trigger" tabindex="0" data-tooltip="'Images' creates a cinematic, photorealistic image. 'Satellite' provides a top-down, tactical satellite image.">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.94 6.94a.75.75 0 11-1.061-1.061 3 3 0 112.871 5.026v.345a.75.75 0 01-1.5 0v-.5c0-.72.57-1.172 1.081-1.287A1.5 1.5 0 108.94 6.94zM10 15a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /></svg>
+            </span>
+          </label>
+          <div class="style-selector" role="radiogroup" aria-labelledby="style-label">
+            <input type="radio" id="style-images" name="style" value="Images" checked />
+            <label for="style-images">Images</label>
+            <input type="radio" id="style-satellite" name="style" value="Satellite imagery" />
+            <label for="style-satellite">Satellite</label>
+          </div>
+        </div>
+        <button type="submit" id="generate-btn" class="circuit-button">
+          <div class="btn-loader hidden"></div>
+          <span class="btn-text">Simulate Anomaly</span>
+        </button>
+      </form>
+
+      <div id="result-wrapper" class="hidden">
+        <div id="result-container">
+          <div id="sun-loader" class="hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="sun-icon"
+            >
+              <path
+                d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 010 1.06l-1.591 1.59a.75.75 0 01-1.06-1.06l1.59-1.591a.75.75 0 011.06 0zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM17.803 17.803a.75.75 0 01-1.06 0l-1.59-1.591a.75.75 0 111.06-1.06l1.59 1.591a.75.75 0 010 1.06zM12 18.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM5.106 17.803a.75.75 0 010-1.06l1.591-1.59a.75.75 0 011.06 1.06l-1.591 1.59a.75.75 0 01-1.06 0zM4.5 12a.75.75 0 01-.75.75H1.5a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM6.106 5.106a.75.75 0 011.06 0l1.591 1.59a.75.75 0 01-1.06 1.06l-1.59-1.591a.75.75 0 010-1.06z"
+              ></path>
+            </svg>
+          </div>
+          <div id="image-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M7.5 1.75a2.75 2.75 0 00-2.75 2.75c0 1.52.812 2.84 2.015 3.515C5.253 8.163 4 9.923 4 12c0 2.761 2.239 5 5 5s5-2.239 5-5c0-2.077-1.253-3.837-3.015-4.515C11.688 6.84 12.5 5.52 12.5 4.5A2.75 2.75 0 009.75 1.75a.75.75 0 01-2.25 0z" />
+            </svg>
+            <p>Your generated simulation will appear here.</p>
+          </div>
+          <img
+            id="generated-image"
+            alt="A weather anomaly simulation"
+            class="hidden"
+          />
+        </div>
+        <div id="error-message" class="hidden"></div>
+      </div>
+    </main>
+
+    <div id="assistant-modal" class="hidden">
+      <div id="assistant-container">
+        <div id="assistant-header">
+          <h2>AI Assistant</h2>
+           <button id="assistant-close-btn" aria-label="Close Assistant">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+            </svg>
+           </button>
+        </div>
+        <div id="chat-history">
+          <!-- Chat messages will be added here -->
+        </div>
+         <div id="typing-indicator" class="hidden">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <form id="chat-form">
+          <input type="text" id="chat-input" placeholder="Let's brainstorm an anomaly..." required autocomplete="off">
+          <button type="submit" id="chat-send-btn" aria-label="Send Message">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M3.105 2.289a.75.75 0 00-.826.95l1.414 4.949a.75.75 0 00.95.826L10 8.185l-5.357-1.802a.75.75 0 00-.538-.063zM10 11.815l5.357 1.802a.75.75 0 00.538.063l5.357-1.802a.75.75 0 00.826-.95l-1.414-4.949a.75.75 0 00-.95-.826L10 11.815z" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
